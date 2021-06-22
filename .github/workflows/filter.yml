@@ -23,4 +23,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           ruby-version: '2.7' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
-      - run: ruby filter_notifications.rb
+      - run: |
+          gem install octokit
+          ruby filter_notifications.rb
