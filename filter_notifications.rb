@@ -2,7 +2,7 @@ require 'octokit'
 
 UNSUBSCRIBE_FILTER_STRINGS = ["grouped deploy branch", "wip"]
 PULLS_REGEX = /pulls\/(\d+)/
-client = Octokit::Client.new(access_token: ENV["GITHUB_TOKEN"])
+client = Octokit::Client.new(access_token: ENV['API_KEY'])
 
 
 notifications = client.notifications
