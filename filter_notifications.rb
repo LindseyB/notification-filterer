@@ -5,6 +5,7 @@ UNSUBSCRIBE_FILTER_STRINGS = ["grouped deploy branch", "wip"]
 PULLS_REGEX = /pulls\/(\d+)/
 client = Octokit::Client.new(access_token: API_KEY)
 
+puts "[#{API_KEY}]"
 
 notifications = client.notifications
 puts "📧 #{notifications.count} notifications to process"
