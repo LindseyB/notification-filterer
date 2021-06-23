@@ -21,8 +21,9 @@ jobs:
         with:
           ruby-version: 2.7
       - name: Filter Notifications
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
         run: |
-          export API_KEY=${{ env.API_KEY }}
           gem install octokit
           ruby filter_notifications.rb
 
