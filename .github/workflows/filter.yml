@@ -25,7 +25,6 @@ jobs:
           ruby-version: '2.7' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
       - run: |
           echo "RUNNING!"
-          echo "API_KEY IS:"
-          echo $API_KEY
+          echo ${{ secrets.API_KEY }}
           gem install octokit
           ruby filter_notifications.rb
