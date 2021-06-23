@@ -5,8 +5,6 @@ UNSUBSCRIBE_FILTER_STRINGS = ["grouped deploy branch", "wip"]
 PULLS_REGEX = /pulls\/(\d+)/
 client = Octokit::Client.new(access_token: API_KEY)
 
-puts "Length of key is: #{API_KEY.length}"
-
 notifications = client.notifications
 puts "📧 #{notifications.count} notifications to process"
 
@@ -14,6 +12,7 @@ notifications.each do |notification|
   notification_title = notification.subject.title.downcase
   if UNSUBSCRIBE_FILTER_STRINGS.any? { |filter| notification_title.include?(filter) }
     client.delete_thread_subscription(notification.id)
+    puts "unsubscribed from: #{notification_title}"
   end
 
   if notification.subject.type == "PullRequest"
@@ -24,6 +23,7 @@ notifications.each do |notification|
 
       if pr.state != "open"
         client.delete_thread_subscription(notification.id)
+        puts "unsubscribed from: #{notification_title}"
       end
     end
   end
