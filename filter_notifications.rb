@@ -1,11 +1,9 @@
 require 'octokit'
 
-API_KEY = ARGV[0]
+API_KEY = ENV['API_KEY']
 UNSUBSCRIBE_FILTER_STRINGS = ["grouped deploy branch", "wip"]
 PULLS_REGEX = /pulls\/(\d+)/
 client = Octokit::Client.new(access_token: API_KEY)
-
-puts "[#{API_KEY}]"
 
 notifications = client.notifications
 puts "📧 #{notifications.count} notifications to process"
