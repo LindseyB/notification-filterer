@@ -19,12 +19,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-ruby@v1
-        env:
-          API_KEY: ${{ secrets.API_KEY }}
+        name: "Filter them notifications"
         with:
           ruby-version: '2.7' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
       - run: |
-          echo "RUNNING!"
-          echo ${{ secrets.API_KEY }}
           gem install octokit
-          ruby filter_notifications.rb
+          ruby filter_notifications.rb ${{ secrets.API_KEY }}
