@@ -12,7 +12,7 @@ Uses an hourly github action to automatically unsubscribe from notification thin
   - click 'Generate new token'
   - create a new token with the `repo` and `notifications` scopes
   - copy your token
-  - click 'Configure SSO' on your token and authorize the GitHub org
+  - click 'Configure SSO' and authorize any relevant organizations
 3. Add your token to your fork
   - go to your fork -> repo settings -> secrets -> actions 
   `https://github.com/<your_username>/notification-filterer/settings/secrets/actions`
